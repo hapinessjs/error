@@ -1,6 +1,6 @@
 import { test, suite } from 'mocha-typescript';
 import * as unit from 'unit.js';
-import { HapinessError } from '../../src';
+import { Biim } from '../../src';
 
 @suite
 class ErrorTest {
@@ -40,20 +40,20 @@ class ErrorTest {
         ];
 
         methods.forEach(_ => unit
-            .object(HapinessError[_]('test', 123).output.payload)
+            .object(Biim[_]('test', null, 123).output.payload)
             .hasProperty('data', 123)
         );
 
         unit
-            .object(HapinessError.wrap(new Error('test')))
+            .object(Biim.wrap(new Error('test')))
             .isInstanceOf(Error);
 
         unit
-            .object(HapinessError.create(400, 'test', 'abc').output.payload)
+            .object(Biim.create(400, 'test', 'abc').output.payload)
             .hasProperty('data', 'abc');
 
         unit
-            .object(HapinessError.unauthorized())
+            .object(Biim.unauthorized())
             .isInstanceOf(Error);
     }
 }
