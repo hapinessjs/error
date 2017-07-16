@@ -59,8 +59,8 @@ $ yarn add @hapiness/error
 
 ```javascript
 "dependencies": {
-    "@hapiness/core": "^1.0.0-rc.5",
-    "@hapiness/error": "^1.0.0-rc.5",
+    "@hapiness/core": "^1.0.0-rc.6",
+    "@hapiness/error": "^1.0.0-rc.6",
     //...
 }
 //...
@@ -79,16 +79,16 @@ my:
 `Node.js Script`:
 
 ```javascript
-import { HapinessError } from '@hapiness/error';
+import { Biim } from '@hapiness/error';
 
-HapinessError.badRequest('my-message');
+Biim.badRequest('my-message', 'some-data', { key: 'bad-request' });
 ```
     
 [Back to top](#table-of-contents)
 
 ## Change History
 
-* v1.0.0-rc.5 (2017-07-12)
+* v1.0.0-rc.6 (2017-07-16)
     * Init the project
     
 [Back to top](#table-of-contents)
