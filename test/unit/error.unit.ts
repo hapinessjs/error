@@ -12,7 +12,6 @@ class ErrorTest {
             'paymentRequired',
             'forbidden',
             'notFound',
-            'methodNotAllowed',
             'notAcceptable',
             'proxyAuthRequired',
             'clientTimeout',
@@ -31,7 +30,6 @@ class ErrorTest {
             'preconditionRequired',
             'tooManyRequests',
             'illegal',
-            'internal',
             'notImplemented',
             'badGateway',
             'serverUnavailable',
@@ -40,8 +38,14 @@ class ErrorTest {
         ];
 
         methods.forEach(_ => unit
-            .object(Biim[_]('test', null, 123).output.payload)
-            .hasProperty('data', 123)
+            .object(Biim[_]('test', null, { key: 123 }).output.payload)
+            .hasProperty('key', 123)
+        );
+
+        const methods2 = [ 'methodNotAllowed', 'internal' ]
+        methods2.forEach(_ => unit
+            .object(Biim[_]('test', null, null, { key: 123 }).output.payload)
+            .hasProperty('key', 123)
         );
 
         unit
@@ -49,8 +53,8 @@ class ErrorTest {
             .isInstanceOf(Error);
 
         unit
-            .object(Biim.create(400, 'test', 'abc').output.payload)
-            .hasProperty('data', 'abc');
+            .object(Biim.create(400, 'test', null, { key: 'abc' }).output.payload)
+            .hasProperty('key', 'abc');
 
         unit
             .object(Biim.unauthorized())
