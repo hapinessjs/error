@@ -19,9 +19,10 @@
         "url": "git+ssh://git@github.com/hapinessjs/config.git"
     },
     "keywords": [
-        "config",
-        "yml",
-        "node-config",
+        "error",
+        "boom",
+        "hapi",
+        "hapijs",
         "Hapiness",
         "Framework",
         "NodeJS",
