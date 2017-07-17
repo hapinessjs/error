@@ -31,7 +31,7 @@
 </div>
 </div>
 
-# Hapiness Error
+# Biim
 
 Error module based on [boom](https://github.com/hapijs/boom).
 
@@ -79,6 +79,8 @@ Biim.badRequest('my-message', 'some-data', { key: 'bad-request' });
 
 ## Change History
 
+* v1.0.0
+    * Final release version
 * v1.0.0-rc.6 (2017-07-16)
     * Init the project
     
