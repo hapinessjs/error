@@ -58,8 +58,7 @@ $ yarn add @hapiness/biim
 
 ```javascript
 "dependencies": {
-    "@hapiness/core": "^1.0.0-rc.6",
-    "@hapiness/biim": "^1.0.0-rc.6",
+    "@hapiness/biim": "^1.1.0",
     //...
 }
 //...
@@ -79,10 +78,13 @@ Biim.badRequest('my-message', 'some-data', { key: 'bad-request' });
 
 ## Change History
 
+* v1.1.0
+    * Improve error instantiation.
+    * Update unit tests.
 * v1.0.0
-    * Final release version
+    * Final release version.
 * v1.0.0-rc.6 (2017-07-16)
-    * Init the project
+    * Init the project.
     
 [Back to top](#table-of-contents)
 
