@@ -9,7 +9,7 @@ import { BiimModule } from '../../src/biim.module';
 class IntegrationTest {
 
     @test('test reformat lifecycle')
-    testError(done) {
+    testError2(done) {
 
         @Route({
             path: '/',
@@ -42,7 +42,7 @@ class IntegrationTest {
                     unit
                         .string(res.result['key'])
                         .is('E_BAD_REQUEST');
-                    done();
+                    this.server.stop().subscribe(_ => done())
                 })
             }
         }
