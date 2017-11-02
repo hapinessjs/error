@@ -38,27 +38,29 @@ class ErrorTest {
         ];
 
         methods.forEach(_ => unit
-            .object(Biim[_]('test', null, { key: 123 }).output.payload)
-            .hasProperty('key', 123)
+            .object(Biim[_]('test', null, { toto: 123 }).output.payload)
+            .hasProperty('toto', 123)
+            .hasProperty('key', 'E_TEST')
         );
 
         const methods2 = [ 'methodNotAllowed', 'internal' ];
         methods2.forEach(_ => unit
-            .object(Biim[_]('test', null, null, { key: 123 }).output.payload)
-            .hasProperty('key', 123)
+            .object(Biim[_]('test', null, null, { toto: 123 }).output.payload)
+            .hasProperty('toto', 123)
+            .hasProperty('key', 'E_TEST')
         );
 
         unit
             .object(Biim.wrap(new Error('test'), null, null, { key: 'abc' }).output.payload)
-            .hasProperty('key', 'abc');
+            .hasProperty('key', 'E_ABC');
 
         unit
             .object(Biim.create(400, 'test', null, { key: 'abc' }).output.payload)
-            .hasProperty('key', 'abc');
+            .hasProperty('key', 'E_ABC');
 
         unit
-            .object(Biim.unauthorized('test', null, null, { key: 'abc' }).output.payload)
-            .hasProperty('key', 'abc');
+            .object(Biim.unauthorized('test', null, null, { key: 'E_ABC' }).output.payload)
+            .hasProperty('key', 'E_ABC');
     }
 
     @test('test without payload')
@@ -111,5 +113,10 @@ class ErrorTest {
         unit
             .object(Biim.unauthorized())
             .isInstanceOf(Error);
+    }
+
+    @test('test message to key')
+    testmessageToKey() {
+        unit.string(Biim['messageToKey']()).is('');
     }
 }
