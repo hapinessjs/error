@@ -2,6 +2,7 @@ import { BoomError as BiimError } from 'boom';
 import * as Boom from 'boom';
 
 export { BiimError };
+export * from './biim.module';
 
 export class Biim {
 
@@ -9,7 +10,24 @@ export class Biim {
         if (error.output && error.output.payload && typeof payload === 'object') {
             error.output.payload = Object.assign({}, error.output.payload, payload);
         }
+        return this.generateKey(error);
+    }
+
+    private static generateKey(error: BiimError): BiimError {
+        error.data = error.data || {};
+        const k: string = error.data.key || error.output.payload['key'];
+        const _key = !!k && typeof k === 'string' ? k.indexOf('E_') === 0 ? k : `E_${k}` : undefined;
+        const key = _key || `E_${this.messageToKey(error.message)}`;
+        error.data.key = key.toUpperCase();
+        error.output.payload['key'] = key.toUpperCase();
         return error;
+    }
+
+    private static messageToKey(message: string = ''): string {
+        return message
+            .replace(/\s+/g, '_')
+            .split(':')
+            .shift();
     }
 
     static wrap(error: Error, statusCode?: number, message?: string, payload?: any): BiimError {
@@ -65,7 +83,6 @@ export class Biim {
         }
         return this.dataInPayload(Boom['paymentRequired'].apply(Boom, args), payload);
     }
-
 
     static forbidden(message?: string, data?: any, payload?: any): BiimError {
         // get args array
