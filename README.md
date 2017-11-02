@@ -58,7 +58,7 @@ $ yarn add @hapiness/biim
 
 ```javascript
 "dependencies": {
-    "@hapiness/biim": "^1.2.0",
+    "@hapiness/biim": "^1.3.0",
     //...
 }
 //...
@@ -78,6 +78,9 @@ Biim.badRequest('my-message', 'some-data', { key: 'bad-request' });
 
 ## Change History
 
+* v1.3.0
+    * Add module to have a lifecycle to format error message
+    * Latest packages' versions
 * v1.2.0
     * Support of `Boom v6.0.0`
     * Latest packages' versions
