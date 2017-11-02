@@ -1,6 +1,5 @@
 import { test, suite } from 'mocha-typescript';
 import * as unit from 'unit.js';
-import { Biim } from '../../src';
 import * as Joi from 'joi';
 import { Hapiness, HapinessModule, OnStart, HttpServerExt, Route, HttpServerService } from '@hapiness/core';
 import { BiimModule } from '../../src/biim.module';
