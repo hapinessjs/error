@@ -7,6 +7,7 @@ import { Biim } from './';
 class ReformatBadRequestLifecycle implements OnEvent {
 
     onEvent(request: Request, reply: ReplyWithContinue) {
+        /* istanbul ignore else */
         if (request.response.isBoom && !request.response.output.payload['key']) {
             const source = request.response.output;
             const err = Biim.create(source.statusCode, source.payload.error);

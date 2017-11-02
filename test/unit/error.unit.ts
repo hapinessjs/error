@@ -59,7 +59,7 @@ class ErrorTest {
             .hasProperty('key', 'E_ABC');
 
         unit
-            .object(Biim.unauthorized('test', null, null, { key: 'abc' }).output.payload)
+            .object(Biim.unauthorized('test', null, null, { key: 'E_ABC' }).output.payload)
             .hasProperty('key', 'E_ABC');
     }
 
@@ -113,5 +113,10 @@ class ErrorTest {
         unit
             .object(Biim.unauthorized())
             .isInstanceOf(Error);
+    }
+
+    @test('test message to key')
+    testmessageToKey() {
+        unit.string(Biim['messageToKey']()).is('');
     }
 }
