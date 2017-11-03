@@ -26,6 +26,8 @@ export class Biim {
     private static messageToKey(message: string = ''): string {
         return message
             .replace(/\s+/g, '_')
+            .replace(/\.+/g, '_')
+            .replace(/-+/g, '_')
             .split(':')
             .shift();
     }
