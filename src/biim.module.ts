@@ -19,7 +19,7 @@ class ReformatBadRequestLifecycle implements OnEvent {
 }
 
 @HapinessModule({
-    version: '1.0.0',
+    version: '1.3.2',
     declarations: [ ReformatBadRequestLifecycle ],
 })
 export class BiimModule {}
