@@ -58,7 +58,7 @@ $ yarn add @hapiness/biim
 
 ```javascript
 "dependencies": {
-    "@hapiness/biim": "^1.3.2",
+    "@hapiness/biim": "^1.4.0",
     //...
 }
 //...
@@ -78,6 +78,10 @@ Biim.badRequest('my-message', 'some-data', { key: 'bad-request' });
 
 ## Change History
 
+* v1.4.0 (2017-11-20)
+    * Latest packages' versions.
+    * Documentation.
+    * Change packaging process.
 * v1.3.2
     * Add module to have a lifecycle to format error message
     * Latest packages' versions
