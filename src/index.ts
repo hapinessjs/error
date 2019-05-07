@@ -1,8 +1,6 @@
-import { BoomError as BiimError } from 'boom';
-import * as Boom from 'boom';
+import * as BiimError from 'boom';
 
 export { BiimError };
-export * from './biim.module';
 
 export class Biim {
 
@@ -25,11 +23,9 @@ export class Biim {
 
     private static messageToKey(message: string = ''): string {
         return message
-            .replace(/\s+/g, '_')
-            .replace(/\.+/g, '_')
-            .replace(/-+/g, '_')
             .split(':')
-            .shift();
+            .shift()
+            .replace(/[^\w]+/gm, '_');
     }
 
     static wrap(error: Error, statusCode?: number, message?: string, payload?: any): BiimError {
@@ -39,7 +35,7 @@ export class Biim {
         if (args.length === 4) {
             args.pop();
         }
-        return this.dataInPayload(Boom.wrap.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.boomify(error, { statusCode, message }), payload);
     }
 
 
@@ -50,7 +46,7 @@ export class Biim {
         if (args.length === 4) {
             args.pop();
         }
-        return this.dataInPayload(Boom.create.apply(Boom, arguments), payload);
+        return this.dataInPayload(new BiimError(message, { statusCode, data }), payload);
     }
 
 
@@ -61,7 +57,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.badRequest.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.badRequest.apply(BiimError, args), payload);
     }
 
 
@@ -72,7 +68,7 @@ export class Biim {
         if (args.length === 4) {
             args.pop();
         }
-        return this.dataInPayload(Boom.unauthorized.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.unauthorized.apply(BiimError, args), payload);
     }
 
 
@@ -83,7 +79,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom['paymentRequired'].apply(Boom, args), payload);
+        return this.dataInPayload(BiimError['paymentRequired'].apply(BiimError, args), payload);
     }
 
     static forbidden(message?: string, data?: any, payload?: any): BiimError {
@@ -93,7 +89,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.forbidden.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.forbidden.apply(BiimError, args), payload);
     }
 
 
@@ -104,7 +100,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.notFound.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.notFound.apply(BiimError, args), payload);
     }
 
 
@@ -115,7 +111,7 @@ export class Biim {
         if (args.length === 4) {
             args.pop();
         }
-        return this.dataInPayload(Boom.methodNotAllowed.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.methodNotAllowed.apply(BiimError, args), payload);
     }
 
 
@@ -126,7 +122,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.notAcceptable.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.notAcceptable.apply(BiimError, args), payload);
     }
 
 
@@ -137,7 +133,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.proxyAuthRequired.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.proxyAuthRequired.apply(BiimError, args), payload);
     }
 
 
@@ -148,7 +144,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.clientTimeout.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.clientTimeout.apply(BiimError, args), payload);
     }
 
 
@@ -159,7 +155,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.conflict.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.conflict.apply(BiimError, args), payload);
     }
 
 
@@ -169,7 +165,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.resourceGone.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.resourceGone.apply(BiimError, args), payload);
     }
 
 
@@ -179,7 +175,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.lengthRequired.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.lengthRequired.apply(BiimError, args), payload);
     }
 
 
@@ -189,7 +185,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.preconditionFailed.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.preconditionFailed.apply(BiimError, args), payload);
     }
 
 
@@ -199,7 +195,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.entityTooLarge.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.entityTooLarge.apply(BiimError, args), payload);
     }
 
 
@@ -209,7 +205,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.uriTooLong.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.uriTooLong.apply(BiimError, args), payload);
     }
 
 
@@ -219,7 +215,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.unsupportedMediaType.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.unsupportedMediaType.apply(BiimError, args), payload);
     }
 
 
@@ -229,7 +225,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.rangeNotSatisfiable.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.rangeNotSatisfiable.apply(BiimError, args), payload);
     }
 
 
@@ -239,7 +235,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.expectationFailed.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.expectationFailed.apply(BiimError, args), payload);
     }
 
 
@@ -249,7 +245,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.teapot.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.teapot.apply(BiimError, args), payload);
     }
 
 
@@ -259,7 +255,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.badData.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.badData.apply(BiimError, args), payload);
     }
 
 
@@ -269,7 +265,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.locked.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.locked.apply(BiimError, args), payload);
     }
 
 
@@ -279,7 +275,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.preconditionRequired.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.preconditionRequired.apply(BiimError, args), payload);
     }
 
 
@@ -289,7 +285,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.tooManyRequests.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.tooManyRequests.apply(BiimError, args), payload);
     }
 
 
@@ -299,7 +295,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.illegal.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.illegal.apply(BiimError, args), payload);
     }
 
 
@@ -309,7 +305,7 @@ export class Biim {
         if (args.length === 4) {
             args.pop();
         }
-        return this.dataInPayload(Boom.internal.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.internal.apply(BiimError, args), payload);
     }
 
     static notImplemented(message?: string, data?: any, payload?: any): BiimError {
@@ -318,7 +314,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.notImplemented.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.notImplemented.apply(BiimError, args), payload);
     }
 
 
@@ -328,7 +324,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.badGateway.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.badGateway.apply(BiimError, args), payload);
     }
 
 
@@ -338,7 +334,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.serverUnavailable.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.serverUnavailable.apply(BiimError, args), payload);
     }
 
 
@@ -348,7 +344,7 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.gatewayTimeout.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.gatewayTimeout.apply(BiimError, args), payload);
     }
 
 
@@ -358,6 +354,6 @@ export class Biim {
         if (args.length === 3) {
             args.pop();
         }
-        return this.dataInPayload(Boom.badImplementation.apply(Boom, args), payload);
+        return this.dataInPayload(BiimError.badImplementation.apply(BiimError, args), payload);
     }
 }
