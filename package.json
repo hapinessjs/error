@@ -1,6 +1,6 @@
 {
     "name": "@hapiness/biim",
-    "version": "1.4.0",
+    "version": "2.0.0",
     "description": "Error Library to use it inside Hapiness framework or standalone using Boom",
     "main": "commonjs/index.js",
     "types": "index.d.ts",
@@ -59,26 +59,21 @@
     },
     "homepage": "https://github.com/hapinessjs/error#readme",
     "dependencies": {
-        "@types/boom": "^4.3.8",
-        "@types/node": "^8.0.53",
-        "boom": "^6.0.0",
-        "debug": "^3.1.0"
+        "boom": "^7.3.0"
     },
     "devDependencies": {
-        "@hapiness/core": "^1.2.2",
+        "@types/boom": "^7.2.1",
         "@types/fs-extra": "^4.0.5",
-        "coveralls": "^3.0.0",
-        "fs-extra": "^4.0.2",
-        "istanbul": "^1.1.0-alpha.1",
-        "joi": "^13.0.2",
-        "mocha": "^4.0.1",
-        "mocha-typescript": "^1.1.12",
-        "rimraf": "^2.6.2",
-        "rxjs": "^5.5.2",
-        "ts-node": "^3.3.0",
-        "tslint": "^5.8.0",
-        "typescript": "^2.6.1",
-        "unit.js": "^2.0.0"
+        "@types/jest": "^24.0.12",
+        "@types/node": "^8.0.53",
+        "coveralls": "^3.0.3",
+        "fs-extra": "^7.0.1",
+        "jest": "^24.8.0",
+        "rimraf": "^2.6.3",
+        "ts-jest": "^24.0.2",
+        "ts-node": "^8.1.0",
+        "tslint": "^5.16.0",
+        "typescript": "^3.4.5"
     },
     "engines": {
         "node": ">=8.0.0"
