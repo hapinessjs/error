@@ -73,11 +73,14 @@ import { Biim } from '@hapiness/biim';
 
 Biim.badRequest('my-message', 'some-data', { key: 'bad-request' });
 ```
-    
+
 [Back to top](#table-of-contents)
 
 ## Change History
 
+* v2.0.0 (2017-05-07)
+    * Remove lifecycle
+    * Update deps, Boom 7
 * v1.4.0 (2017-11-20)
     * Latest packages' versions.
     * Documentation.
@@ -95,7 +98,7 @@ Biim.badRequest('my-message', 'some-data', { key: 'bad-request' });
     * Final release version.
 * v1.0.0-rc.6 (2017-07-16)
     * Init the project.
-    
+
 [Back to top](#table-of-contents)
 
 ## Maintainers
