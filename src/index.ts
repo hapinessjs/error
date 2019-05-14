@@ -1,6 +1,26 @@
-import * as BiimError from 'boom';
+import * as BiimError from '@hapi/boom';
 
-export { BiimError };
+export interface BiimError extends Error {
+    isBoom: boolean;
+    isServer: boolean;
+    message: string;
+    output: Output;
+    isMissing?: boolean;
+    data: any;
+    reformat(): string;
+}
+export interface Output {
+    statusCode: number;
+    headers: {[index: string]: string};
+    payload: Payload;
+}
+
+export interface Payload {
+    statusCode: number;
+    error: string;
+    message: string;
+    attributes?: any;
+}
 
 export class Biim {
 

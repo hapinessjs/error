@@ -1,6 +1,6 @@
 {
     "name": "@hapiness/biim",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Error Library to use it inside Hapiness framework or standalone using Boom",
     "main": "commonjs/index.js",
     "types": "index.d.ts",
@@ -59,10 +59,9 @@
     },
     "homepage": "https://github.com/hapinessjs/error#readme",
     "dependencies": {
-        "boom": "^7.3.0"
+        "@hapi/boom": "^7.4.2"
     },
     "devDependencies": {
-        "@types/boom": "^7.2.1",
         "@types/fs-extra": "^4.0.5",
         "@types/jest": "^24.0.12",
         "@types/node": "^8.0.53",
